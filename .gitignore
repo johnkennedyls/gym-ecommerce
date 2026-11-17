@@ -1,0 +1,30 @@
+# Dependencias
+node_modules/
+
+# Artefactos de compilación
+dist/
+build/
+*.tsbuildinfo
+
+# Pruebas
+coverage/
+playwright-report/
+test-results/
+blob-report/
+frontend/e2e/.auth/
+
+# Entorno local y secretos
+.env
+.env.*
+!.env.example
+
+# Registros
+*.log
+npm-debug.log*
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.qoder-office-docx-locks/

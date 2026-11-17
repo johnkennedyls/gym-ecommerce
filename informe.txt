@@ -1,0 +1,573 @@
+
+INFORME DE CALIDAD DE SOFTWARE
+PROYECTO DE APLICACIÓN E-COMMERCE PARA GIMNASIOS
+Informe académico para la planificación, desarrollo y aseguramiento de la calidad de un sistema de comercio electrónico orientado al sector fitness.
+Presentado por:Santiago Alejandro Medina MuñozJohm Kennedy Landazuri SandovalIngeniería de SistemasCalidad de SoftwareFundación Universitaria de PopayánPopayán, Cauca2026
+
+CONTENIDO
+1. Introducción
+2. Descripción del proyecto
+3. Justificación
+4. Objetivos
+5. Alcance del sistema
+6. Actores y roles
+7. Requerimientos del sistema
+8. Metodología de desarrollo
+9. Tecnologías propuestas
+10. Arquitectura del software
+11. Modelos y estándares de calidad de software
+12. Plan de aseguramiento de la calidad
+13. Estrategia de pruebas
+14. Métricas e indicadores de calidad
+15. Gestión de riesgos
+16. Cronograma general de desarrollo
+17. Implementación realizada
+18. Resultados de pruebas y métricas de calidad
+19. Conclusiones
+20. Referencias bibliográficas
+
+1. Introducción
+La transformación digital ha modificado la forma en que las organizaciones ofrecen productos y servicios a sus clientes. En el sector fitness, los gimnasios requieren herramientas que permitan administrar membresías, comercializar productos, gestionar reservas y facilitar los procesos de pago de manera segura y eficiente. En este contexto se propone el desarrollo de una aplicación e-commerce especializada en gimnasios, concebida como una plataforma web que integre funcionalidades comerciales y administrativas en un mismo entorno.
+El presente informe establece las bases para el desarrollo del proyecto desde la perspectiva de la calidad de software. Se definen los requerimientos funcionales y no funcionales, los actores del sistema, la metodología ágil, las tecnologías, la arquitectura y los mecanismos de aseguramiento y control de calidad. Asimismo, se adoptan modelos y estándares reconocidos que permiten evaluar características como adecuación funcional, rendimiento, seguridad, usabilidad, mantenibilidad y fiabilidad.
+El propósito es que el producto final no se limite a cumplir las funciones solicitadas, sino que también sea confiable, seguro, fácil de utilizar, mantenible y preparado para evolucionar de acuerdo con las necesidades del gimnasio y sus clientes.
+El documento conserva la planificación original en las secciones 1 a 16 y añade dos secciones de resultados: la 17 describe la implementación efectivamente realizada y la 18 reporta las pruebas ejecutadas y las métricas medidas. Las conclusiones y las referencias se desplazan a las secciones 19 y 20.
+2. Descripción del proyecto
+El proyecto consiste en diseñar y desarrollar una plataforma e-commerce para gimnasios que permita digitalizar la venta de productos y servicios relacionados con el entrenamiento físico. La solución estará disponible mediante una interfaz web responsiva y podrá ser utilizada desde computadores, tabletas y teléfonos móviles.
+La plataforma tendrá como funciones principales:
+Registro e inicio de sesión de usuarios.
+Administración de perfiles y roles.
+Catálogo de productos deportivos y servicios.
+Consulta de precios, disponibilidad y características.
+Carrito de compras y gestión de pedidos.
+Compra de membresías y planes del gimnasio.
+Reserva de clases y servicios de entrenamiento.
+Gestión de pagos mediante un proveedor externo seguro.
+Consulta del estado e historial de pedidos.
+Panel administrativo para productos, inventario, usuarios, pedidos y membresías.
+Generación de reportes básicos para la administración.
+3. Justificación
+La creación de una plataforma e-commerce para gimnasios permite centralizar procesos que normalmente pueden encontrarse dispersos entre canales físicos, redes sociales, mensajería y sistemas independientes. La solución busca mejorar la experiencia del cliente y proporcionar al gimnasio una herramienta para administrar sus operaciones comerciales.
+Desde el punto de vista de calidad, el proyecto resulta pertinente porque una plataforma que procesa cuentas de usuarios, pedidos y pagos debe incorporar controles de seguridad, disponibilidad, integridad de datos y trazabilidad. Por ello, la calidad debe considerarse desde las primeras etapas y no únicamente durante la fase final de pruebas.
+4. Objetivos
+4.1 Objetivo general
+Diseñar y desarrollar una aplicación e-commerce orientada a gimnasios que permita gestionar productos, servicios, membresías, pedidos y pagos, aplicando una metodología ágil y estándares de calidad de software que garanticen un producto funcional, seguro, usable, mantenible y confiable.
+4.2 Objetivos específicos
+Identificar y documentar los requerimientos funcionales y no funcionales del sistema.
+Definir una arquitectura de software modular que facilite la evolución y mantenimiento de la aplicación.
+Implementar una metodología ágil para organizar el desarrollo mediante iteraciones y entregas incrementales.
+Seleccionar tecnologías apropiadas para frontend, backend, base de datos, control de versiones y despliegue.
+Aplicar el modelo ISO/IEC 25010 como referencia para evaluar la calidad del producto.
+Definir una estrategia de pruebas funcionales, de integración, seguridad, rendimiento y usabilidad.
+Establecer métricas que permitan medir el cumplimiento de los objetivos de calidad.
+Identificar riesgos técnicos y operativos y establecer acciones de mitigación.
+5. Alcance del sistema
+El alcance inicial contempla los siguientes módulos:
+Módulo
+Descripción
+Autenticación
+Registro, inicio de sesión, recuperación de contraseña y control de acceso.
+Usuarios
+Gestión de perfiles, datos personales y roles.
+Catálogo
+Productos, servicios, categorías, precios, imágenes y disponibilidad.
+Membresías
+Consulta y compra de planes del gimnasio.
+Carrito
+Agregar, modificar y eliminar productos o servicios antes de la compra.
+Pedidos
+Creación, consulta y seguimiento de pedidos.
+Pagos
+Integración con una pasarela externa y registro del estado de la transacción.
+Reservas
+Consulta y reserva de clases o servicios disponibles.
+Administración
+Gestión de usuarios, catálogo, inventario, pedidos y reportes.
+Notificaciones
+Confirmaciones y avisos relacionados con pedidos, pagos y reservas.
+El alcance no incluye inicialmente la construcción de una pasarela de pagos propia, servicios financieros, contabilidad empresarial avanzada ni aplicaciones móviles nativas. Estas funcionalidades podrán considerarse en futuras versiones.
+6. Actores y roles
+Actor
+Responsabilidades principales
+Cliente
+Registrarse, consultar catálogo, comprar productos/servicios, adquirir membresías, reservar clases y consultar pedidos.
+Administrador
+Gestionar usuarios, productos, categorías, inventario, membresías, pedidos y reportes.
+Personal del gimnasio
+Consultar reservas, gestionar disponibilidad de clases y atender servicios asignados.
+Pasarela de pago
+Procesar las transacciones y devolver el resultado de cada operación.
+Sistema de notificaciones
+Enviar confirmaciones y avisos asociados a eventos del sistema.
+7. Requerimientos del sistema
+7.1 Requerimientos funcionales
+ID
+Requerimiento
+Descripción
+RF-01
+Registro de usuario
+El sistema deberá permitir que una persona cree una cuenta proporcionando los datos requeridos.
+RF-02
+Autenticación
+El sistema deberá permitir iniciar y cerrar sesión de manera segura.
+RF-03
+Gestión de perfiles
+El usuario podrá consultar y actualizar la información permitida de su perfil.
+RF-04
+Catálogo
+El sistema deberá mostrar productos y servicios con nombre, descripción, precio, imagen y disponibilidad.
+RF-05
+Búsqueda y filtros
+El usuario podrá buscar productos y filtrar resultados por categoría, precio y disponibilidad.
+RF-06
+Carrito
+El usuario podrá agregar, modificar cantidades y retirar elementos del carrito.
+RF-07
+Checkout
+El sistema deberá permitir revisar la compra y registrar los datos necesarios para completar el pedido.
+RF-08
+Pagos
+El sistema deberá integrarse con una pasarela de pagos y registrar el resultado de la transacción.
+RF-09
+Pedidos
+El cliente podrá consultar el historial y estado de sus pedidos.
+RF-10
+Membresías
+El cliente podrá consultar y adquirir planes de membresía disponibles.
+RF-11
+Reservas
+El cliente podrá consultar horarios disponibles y reservar clases o servicios.
+RF-12
+Administración
+El administrador podrá crear, modificar, desactivar y consultar productos, servicios y categorías.
+RF-13
+Inventario
+El sistema deberá permitir controlar la disponibilidad de productos.
+RF-14
+Reportes
+El administrador podrá consultar información básica sobre ventas, pedidos y membresías.
+RF-15
+Notificaciones
+El sistema deberá generar notificaciones para eventos relevantes como compras, pagos y reservas.
+7.2 Requerimientos no funcionales
+ID
+Característica
+Criterio
+RNF-01
+Seguridad
+Las contraseñas deberán almacenarse utilizando mecanismos de hash seguros y el acceso deberá estar protegido por autenticación y autorización.
+RNF-02
+Rendimiento
+Las operaciones frecuentes deberán responder en tiempos adecuados bajo la carga esperada del sistema.
+RNF-03
+Disponibilidad
+La plataforma deberá diseñarse para minimizar interrupciones y permitir recuperación ante fallos.
+RNF-04
+Usabilidad
+La interfaz deberá ser clara, consistente, responsiva y accesible desde dispositivos comunes.
+RNF-05
+Mantenibilidad
+El código deberá organizarse en módulos y seguir convenciones que faciliten su comprensión y modificación.
+RNF-06
+Escalabilidad
+La arquitectura deberá permitir aumentar usuarios y transacciones sin rediseñar completamente el sistema.
+RNF-07
+Compatibilidad
+La aplicación deberá funcionar correctamente en los principales navegadores modernos.
+RNF-08
+Integridad
+Las operaciones críticas deberán preservar la consistencia de la información.
+RNF-09
+Trazabilidad
+Los eventos administrativos y transacciones importantes deberán contar con registros que permitan su seguimiento.
+RNF-10
+Privacidad
+Los datos personales deberán tratarse conforme a las políticas de privacidad y la normativa aplicable.
+8. Metodología de desarrollo
+8.1 Metodología Scrum
+Se propone utilizar Scrum como marco de trabajo ágil debido a que permite desarrollar el producto de forma incremental, obtener retroalimentación frecuente y priorizar las funcionalidades de mayor valor para el usuario.
+Roles propuestos:
+Product Owner: representa las necesidades del negocio y prioriza el Product Backlog.
+Scrum Master: facilita el proceso, elimina impedimentos y promueve el uso adecuado del marco Scrum.
+Equipo de desarrollo: diseña, programa, prueba, documenta e integra las funcionalidades.
+Eventos y artefactos principales:
+Product Backlog: listado priorizado de funcionalidades y necesidades.
+Sprint: periodo de trabajo de duración definida para producir un incremento funcional.
+Sprint Planning: selección y planificación del trabajo del Sprint.
+Daily Scrum: reunión breve para sincronizar el trabajo y detectar impedimentos.
+Sprint Review: presentación del incremento y recepción de retroalimentación.
+Sprint Retrospective: análisis del proceso y definición de mejoras.
+Definition of Done: criterios que una funcionalidad debe cumplir para considerarse terminada.
+8.2 Prácticas ágiles complementarias
+Se recomienda complementar Scrum con prácticas de Extreme Programming (XP), especialmente integración continua, desarrollo guiado por pruebas cuando sea viable, revisión de código, programación colaborativa y refactorización. Estas prácticas contribuyen directamente a reducir defectos y mejorar la mantenibilidad.
+9. Tecnologías propuestas
+Capa
+Tecnología propuesta
+Justificación
+Frontend
+React + TypeScript
+Permite construir interfaces componentizadas, reutilizables y tipadas.
+Estilos/UI
+HTML5 + CSS3 + framework de componentes
+Facilita interfaces responsivas y consistentes.
+Backend
+Node.js + NestJS
+Adecuado para APIs, arquitectura modular y desarrollo con TypeScript.
+API
+REST/JSON
+Interfaz estándar para comunicación entre frontend y backend.
+Base de datos
+PostgreSQL
+Base de datos relacional robusta para usuarios, pedidos, productos y transacciones.
+Autenticación
+JWT + mecanismos de seguridad del servidor
+Permite gestionar sesiones y autorización en una API.
+Control de versiones
+Git + repositorio remoto
+Permite trazabilidad, ramas, revisiones y colaboración.
+Pruebas
+Jest + pruebas de API + Playwright
+Permite cubrir lógica, endpoints y flujos de usuario.
+CI/CD
+GitHub Actions o plataforma equivalente
+Automatiza pruebas, validaciones y despliegues.
+Despliegue
+Contenedores Docker + proveedor cloud
+Facilita ambientes reproducibles y escalabilidad.
+Monitoreo
+Logs estructurados + herramienta de observabilidad
+Permite detectar errores y evaluar comportamiento en producción.
+Las tecnologías son una propuesta inicial y podrán ajustarse según las competencias del equipo, infraestructura disponible, presupuesto y requisitos institucionales.
+Resultado de la selección. La implementación confirmó React con TypeScript en el cliente, Node.js con NestJS y TypeORM sobre PostgreSQL en el servidor, JWT para la autenticación, REST/JSON como contrato, Git para el control de versiones y Jest con Supertest y Playwright en las pruebas; la hoja de estilos se resolvió con CSS propio en lugar de un framework de componentes. Las tres filas restantes quedaron pendientes: no se montaron flujos de integración continua, ni contenedores, ni una plataforma de observabilidad, como explica la sección 17.5.
+10. Arquitectura del software
+Se propone una arquitectura de tres capas con separación clara de responsabilidades: presentación, lógica de negocio y datos. El frontend consumirá una API REST desarrollada en el backend. El backend gestionará autenticación, reglas de negocio y acceso a la base de datos.
+Componente
+Responsabilidad
+Frontend
+Presentar información, gestionar interacción del usuario y consumir la API.
+API / Backend
+Aplicar reglas de negocio, autenticar usuarios, autorizar operaciones y coordinar servicios.
+Persistencia
+Almacenar y consultar usuarios, productos, inventario, pedidos, pagos y reservas.
+Servicio de pagos
+Procesar las transacciones a través de un proveedor externo.
+Servicio de notificaciones
+Enviar correos o mensajes relacionados con operaciones del sistema.
+Monitoreo
+Registrar eventos, errores y métricas de operación.
+Para una primera versión se recomienda un monolito modular bien estructurado en lugar de microservicios. Esta decisión reduce la complejidad operacional del proyecto académico y mantiene separadas las responsabilidades internas. La arquitectura podría evolucionar hacia servicios independientes cuando existan necesidades reales de escala.
+11. Modelos y estándares de calidad de software
+11.1 ISO/IEC 25010 – Modelo de calidad del producto
+ISO/IEC 25010 proporciona un marco para evaluar la calidad de un producto de software mediante características y subcaracterísticas. Para este proyecto se priorizarán las siguientes:
+Característica
+Aplicación en el proyecto
+Adecuación funcional
+Verificar que las funciones de catálogo, compras, membresías, reservas y administración cumplan los requisitos.
+Eficiencia de desempeño
+Controlar tiempos de respuesta, uso de recursos y comportamiento bajo carga.
+Compatibilidad
+Garantizar funcionamiento e integración con navegadores y servicios externos.
+Usabilidad
+Evaluar facilidad de aprendizaje, navegación, claridad y prevención de errores.
+Fiabilidad
+Reducir fallos y asegurar recuperación ante errores.
+Seguridad
+Proteger autenticación, autorización, datos personales y transacciones.
+Mantenibilidad
+Mantener código modular, comprensible, analizable, modificable y comprobable.
+Portabilidad
+Facilitar despliegue en diferentes ambientes y plataformas.
+11.2 ISO/IEC/IEEE 29148 – Ingeniería de requisitos
+Se utilizará como referencia para documentar y gestionar los requisitos. Cada requisito deberá ser claro, verificable, trazable, consistente y necesario. Se recomienda asociar los requisitos con historias de usuario, criterios de aceptación y casos de prueba.
+11.3 ISO/IEC/IEEE 29119 – Pruebas de software
+Se tomará como referencia para estructurar el proceso de pruebas. El equipo definirá niveles de prueba, condiciones de prueba, casos, resultados y evidencias, manteniendo trazabilidad entre requisitos y pruebas.
+11.4 ISO/IEC 27001 – Gestión de seguridad de la información
+Como referencia para seguridad se considerarán principios relacionados con gestión de riesgos, control de acceso, protección de información, gestión de incidentes y mejora continua. La plataforma deberá aplicar controles técnicos adecuados a la naturaleza de los datos que procese.
+11.5 CMMI como referencia de madurez
+CMMI puede utilizarse como marco de referencia para mejorar la capacidad de los procesos de desarrollo. Para este proyecto académico no se plantea una certificación CMMI, sino la adopción de prácticas como planificación, gestión de requisitos, medición, aseguramiento de procesos y mejora continua.
+11.6 Principios de OWASP
+Se utilizarán las recomendaciones de OWASP como referencia práctica para identificar vulnerabilidades frecuentes en aplicaciones web, especialmente en autenticación, control de acceso, validación de entradas, gestión de sesiones y protección de datos.
+12. Plan de aseguramiento de la calidad
+El aseguramiento de la calidad (QA) se realizará durante todo el ciclo de vida del proyecto. No se limitará a ejecutar pruebas al final, sino que incluirá prevención de defectos, revisión de requisitos, estándares de código, automatización y seguimiento de métricas.
+Actividad QA
+Momento
+Responsable
+Evidencia
+Revisión de requisitos
+Antes y durante cada Sprint
+Equipo + Product Owner
+Historias y criterios de aceptación revisados
+Revisión de diseño
+Antes de implementar módulos importantes
+Equipo técnico
+Decisiones y diagramas de arquitectura
+Revisión de código
+En cada cambio relevante
+Desarrolladores
+Pull request / revisión
+Pruebas unitarias
+Durante desarrollo
+Desarrolladores
+Resultados automatizados
+Pruebas de integración
+Por incremento
+QA + desarrollo
+Reporte de pruebas
+Pruebas end-to-end
+Por funcionalidad crítica
+QA
+Evidencias de ejecución
+Pruebas de seguridad
+Por versión
+Equipo técnico/QA
+Reporte de vulnerabilidades
+Pruebas de rendimiento
+Antes de entrega
+QA
+Métricas de carga y respuesta
+Validación con usuario
+Sprint Review
+Product Owner/usuarios
+Criterios aceptados o ajustes
+Control de defectos
+Continuo
+Todo el equipo
+Registro y estado de incidencias
+13. Estrategia de pruebas
+La estrategia se dividirá en diferentes niveles:
+Tipo de prueba
+Objetivo
+Ejemplos
+Unitarias
+Validar unidades pequeñas de código.
+Cálculo de totales, validación de reglas de membresías.
+Integración
+Verificar interacción entre componentes.
+Backend con PostgreSQL; API con servicio de pagos.
+API
+Validar endpoints, datos y respuestas.
+Registro, login, productos, pedidos y reservas.
+End-to-end
+Validar flujos completos desde la perspectiva del usuario.
+Registrarse → comprar → pagar → consultar pedido.
+Usabilidad
+Evaluar facilidad de uso y comprensión.
+Navegación, checkout y mensajes de error.
+Seguridad
+Detectar vulnerabilidades y accesos indebidos.
+Control de acceso, inyección, sesiones y validación.
+Rendimiento
+Evaluar respuesta bajo carga.
+Múltiples usuarios consultando catálogo y realizando operaciones.
+Compatibilidad
+Verificar funcionamiento en diferentes navegadores/dispositivos.
+Chrome, Edge, Firefox y diferentes tamaños de pantalla.
+Como criterio general, una funcionalidad no se considerará terminada hasta que cumpla sus criterios de aceptación, pase las pruebas definidas, no presente defectos críticos abiertos y se encuentre integrada en la rama correspondiente.
+14. Métricas e indicadores de calidad
+Métrica
+Objetivo
+Indicador propuesto
+Cobertura de pruebas
+Medir cuánto código relevante está cubierto.
+Porcentaje de cobertura automatizada.
+Defectos por Sprint
+Controlar la cantidad de defectos detectados.
+Número de defectos abiertos/cerrados.
+Defectos críticos
+Priorizar problemas que afectan funciones esenciales.
+Cantidad de defectos críticos abiertos.
+Tiempo de respuesta
+Evaluar rendimiento.
+Promedio y percentiles de respuesta.
+Disponibilidad
+Medir continuidad del servicio.
+Porcentaje de disponibilidad.
+Éxito de pruebas
+Controlar estabilidad del incremento.
+Pruebas aprobadas / pruebas ejecutadas.
+Retrabajo
+Identificar problemas de calidad tempranos.
+Historias o tareas reabiertas.
+Deuda técnica
+Controlar problemas que afectan mantenibilidad.
+Incidencias técnicas priorizadas.
+Satisfacción del usuario
+Evaluar experiencia.
+Encuesta o valoración posterior a pruebas de aceptación.
+15. Gestión de riesgos
+Riesgo
+Probabilidad
+Impacto
+Mitigación
+Cambios frecuentes de requisitos
+Media
+Alto
+Priorización del backlog y control de cambios mediante Scrum.
+Vulnerabilidades de seguridad
+Media
+Alto
+Revisiones de seguridad, validación de entradas, control de acceso y pruebas.
+Problemas con pasarela de pagos
+Media
+Alto
+Utilizar proveedor documentado, ambiente de pruebas y manejo de errores.
+Pérdida o corrupción de datos
+Baja
+Alto
+Copias de seguridad, transacciones y políticas de recuperación.
+Bajo rendimiento
+Media
+Medio
+Pruebas de carga, optimización de consultas y monitoreo.
+Falta de experiencia técnica
+Media
+Medio
+Capacitación, estándares de código y revisión entre pares.
+Retrasos del proyecto
+Media
+Medio
+Sprints cortos, priorización y seguimiento de velocidad.
+Fallos en producción
+Media
+Alto
+CI/CD, pruebas automatizadas, logs y estrategia de rollback.
+16. Cronograma general de desarrollo
+Se propone un cronograma de 10 semanas, que puede ajustarse a las fechas académicas.
+Semana
+Actividad principal
+Entregable
+1
+Levantamiento y análisis de requisitos
+Backlog inicial y requisitos.
+2
+Diseño UX/UI y arquitectura
+Prototipos y arquitectura.
+3
+Configuración del proyecto y autenticación
+Base técnica y módulo de usuarios.
+4
+Catálogo e inventario
+Módulo de productos.
+5
+Carrito y checkout
+Flujo de compra.
+6
+Pedidos y membresías
+Gestión de pedidos y planes.
+7
+Reservas y notificaciones
+Módulo de reservas.
+8
+Administración y reportes
+Panel administrativo.
+9
+Integración, pruebas y seguridad
+Versión candidata.
+10
+Pruebas finales, correcciones y documentación
+Versión final y documentación.
+17. Implementación realizada
+Las secciones anteriores describen lo planificado. Esta y la siguiente documentan lo construido y lo medido para que el lector pueda contrastar ambas mitades del informe. El producto es un monorepo con dos aplicaciones independientes, backend/ y frontend/, que se ejecutan en local contra PostgreSQL sin servicios externos.
+17.1 Superficie entregada
+Componente | Implementación efectiva | Evidencia en el repositorio
+API REST | NestJS 11 con diez módulos de dominio, once controladores y cincuenta y cinco endpoints bajo el prefijo /api | backend/src/modules
+Persistencia | TypeORM con dieciséis entidades y un sembrado idempotente de datos de demostración | backend/src/database
+Seguridad | bcrypt, JWT de acceso y de refresco con rotación, guardas por rol, cabeceras de protección, límites de tasa y bitácora de auditoría | backend/src/modules/auth y backend/src/common
+Contrato de API | Documentación OpenAPI interactiva | /api/docs con el servidor en desarrollo
+Interfaz de cliente | React 19 con TypeScript: catálogo, ficha, carrito, pago, pedidos, membresías, clases, reservas, notificaciones y perfil | frontend/src/pages (dieciséis pantallas)
+Panel de administración | Tablero, productos y categorías, pedidos, usuarios y roles, planes, horarios, reservas y auditoría | frontend/src/pages/admin (ocho pantallas)
+Pruebas automatizadas | Jest para reglas de negocio y API, Playwright para la interfaz | backend/test y frontend/e2e
+Puesta en marcha | Instalación, variables de ambiente de ejemplo, tarjetas de la pasarela simulada y cuentas del sembrado | README.md y backend/.env.example
+La interfaz expone veinticuatro rutas de navegación —dieciséis del cliente y ocho del panel—. El código propio suma 12,308 líneas de TypeScript: 5,704 en la capa de API y 6,604 en la interfaz, incluidas las 424 líneas de las especificaciones de extremo a extremo.
+17.2 Trazabilidad de los requerimientos funcionales
+ID | Requerimiento | Estatus | Materialización
+RF-01 | Registro de usuario | Cumplido | Alta de cuenta con validación de fortaleza y de correo duplicado
+RF-02 | Autenticación | Cumplido | Inicio y cierre de sesión con rotación del token de refresco
+RF-03 | Gestión de perfiles | Cumplido | Consulta y actualización de la cuenta propia
+RF-04 | Catálogo | Cumplido | Productos y servicios con imagen, precio, categoría y disponibilidad
+RF-05 | Búsqueda y filtros | Cumplido | Texto, categoría, tipo, rango de precios, solo disponibles y orden, reflejados en la URL
+RF-06 | Carrito | Cumplido | Agregar, cambiar cantidades y retirar con el total calculado en el servidor
+RF-07 | Checkout | Cumplido | Confirmación de datos de entrega y creación del pedido
+RF-08 | Pagos | Cumplido con pasarela simulada | Gateway de pruebas con tarjetas deterministas, clave de idempotencia y registro del resultado
+RF-09 | Pedidos | Cumplido | Historial y detalle del pedido con su estado
+RF-10 | Membresías | Cumplido | Compra de planes y consulta de la membresía activa con su vencimiento
+RF-11 | Reservas | Cumplido | Horarios, reserva y cancelación con reglas de cupo y de anticipación
+RF-12 | Administración | Cumplido | Alta, edición, desactivación y filtros de catálogo, planes y horarios
+RF-13 | Inventario | Cumplido | Ajuste de existencias y bloqueo de la compra de artículos agotados
+RF-14 | Reportes | Parcial | Tablero con ventas, pedidos e inventario crítico; sin exportación ni series históricas
+RF-15 | Notificaciones | Cumplido en la interfaz | Centro de notificaciones con estado de lectura; el puerto de transporte deja pendiente el adaptador de correo
+RF-08 y RF-15 se resolvieron con componentes propios —una pasarela de pruebas y notificaciones internas— porque el alcance acordado no contempla contratos con proveedores reales ni envío de correo. El diseño aísla esos puntos tras un puerto de transporte para que el adaptador definitivo se conecte sin alterar el dominio.
+17.3 Cómo se materializaron los requerimientos no funcionales
+ID | Solución implementada | Verificación
+RNF-01 | Contraseñas con hash, tokens de quince minutos, refresco almacenado como hash y autorización por rol en cada endpoint administrativo | Suite de API de autenticación y pruebas de guardas en la interfaz
+RNF-02 | Listas paginadas, relaciones indexadas y proyecciones que no arrastran colecciones completas | Sin medición de rendimiento, según 18.4
+RNF-03 | Transacciones del ORM en pago, pedido y reserva, con rechazo de la escritura antes de corromper el estado | Pruebas de integridad de inventario y de cupo
+RNF-04 | Flujo guiado, mensajes de error específicos, estados vacíos, cargadores de esqueleto y bloqueo del doble envío | Recorrido automatizado de las veintiséis pruebas de interfaz
+RNF-05 | Monolito modular, TypeScript estricto, reglas de estilo y primitivas de interfaz compartidas | Compilación y análisis estático sin errores
+RNF-06 | El diseño modular lo habilita, pero no se montó caché distribuida ni réplicas | No medido
+RNF-07 | Interfaz responsiva verificada en un navegador de escritorio | Una sola combinación probada
+RNF-08 | El pedido solo pasa a pagado con transacción aprobada y el cupo se descuenta al confirmar la reserva | Prueba de rechazo, reintento y aprobación del pago
+RNF-09 | Bitácora de auditoría de los eventos administrativos con pantalla dedicada | Pestaña de bitácora del panel
+RNF-10 | No se guarda el número completo de la tarjeta, solo sus últimos dígitos, y las contraseñas nunca aparecen en las respuestas | Revisión de las cargas útiles de las pruebas de pago
+17.4 Defectos destapados y corregidos durante la verificación
+La ejecución de las pruebas reveló fallas preexistentes que ya fueron corregidas. Se documentan porque forman parte del resultado del aseguramiento de la calidad.
+Defecto | Síntoma observado | Corrección
+El sembrado no leía las variables de ambiente | La carga de datos abortaba con credenciales inválidas | Carga explícita del archivo de ambiente en la fuente de datos
+Reutilización de la clave de idempotencia | Tras un pago rechazado la pasarela bloqueaba el reintento | Una clave nueva por intento en el checkout y en el formulario de pago
+Acciones disponibles sin datos válidos | Finalizar la compra seguía activo con el carrito vacío o sin membresía | Guardas de estado en carrito, planes y clases
+Notificaciones desactualizadas | El contador del encabezado solo cambiaba al recargar la página | Evento interno que refresca el centro de notificaciones
+Panel de productos incompleto | El formulario de alta no se abría y la tabla duplicaba su cabecera | Corrección del encabezado de página y del renderizado de la lista
+Proxy de desarrollo mal dirigido | La interfaz apuntaba a una dirección que el servidor no escuchaba | Variable de destino en la configuración del servidor de desarrollo
+Sesiones de prueba contaminadas | El perfil de administrador ejecutaba con identidad de cliente | Establecimiento de sesión separado por rol con aserción de identidad
+17.5 Lo que el acuerdo de alcance excluyó
+El equipo decidió no añadir infraestructura. A diferencia de lo propuesto en las secciones 9, 12 y 15, el entregable no incluye contenedores, ni flujos de integración continua, ni despliegue en la nube, ni monitoreo centralizado, ni pruebas de carga. Todo el aseguramiento reportado se ejecuta de forma local con las herramientas descritas, de modo que la mitigación del riesgo de fallos en producción descansa por ahora en la batería automatizada y no en un flujo de despliegue.
+18. Resultados de pruebas y métricas de calidad
+18.1 Ejecución automatizada
+Las cifras de esta sección provienen de una ejecución completa de las tres baterías sobre PostgreSQL 18, Node.js 24 y el Chromium administrado por Playwright 1.64.1 en Windows 10.
+Nivel | Herramienta | Casos | Aprobados | Duración
+Unitarias de reglas de negocio | Jest (5 suites) | 31 | 31 (100 %) | 29 s
+API de extremo a extremo sobre base de datos real | Jest + Supertest (3 suites) | 41 | 41 (100 %) | 44 s
+Interfaz de usuario | Playwright (6 archivos + 1 establecimiento de sesión) | 26 | 26 (100 %) | 1 min 12 s
+Total | Tres niveles integrados | 98 | 98 (100 %) | 2 min 25 s
+Las pruebas de interfaz se reparten en perfiles de ejecución —público, cliente y administrador— de modo que cada rol recorre sus propias rutas con sus propias credenciales y las guardas de acceso quedan verificadas desde el navegador y no solo desde la API.
+18.2 Cobertura medida
+La instrumentación de Jest sobre la batería unitaria del backend devuelve 14.9 % de sentencias, 15.9 % de ramas, 14.4 % de funciones y 15.7 % de líneas. La cifra global es baja por una decisión de diseño: las pruebas unitarias cubren las reglas puras y deterministas, mientras que los servicios con base de datos se ejercitan desde la suite de API, que no se instrumenta.
+Archivo con prueba unitaria | Sentencias | Ramas | Funciones | Líneas
+cart-calculator.ts | 100 % | 100 % | 100 % | 100 %
+booking-rules.ts | 100 % | 88.9 % | 100 % | 100 %
+membership-rules.ts | 100 % | 80 % | 100 % | 100 %
+environment.ts | 92.9 % | 90.3 % | 66.7 % | 100 %
+sandbox-payment.gateway.ts | 88.6 % | 77.8 % | 83.3 % | 92.1 %
+La métrica de cobertura definida en la sección 14 queda así registrada con su valor real y con su límite explicado. Aumentarla exige instrumentar la suite de API, que hoy corre contra una base de datos independiente y no forma parte del reporte.
+18.3 Evidencia por característica de ISO/IEC 25010
+Característica | Evidencia obtenida | Valoración
+Adecuación funcional | Noventa y ocho casos automatizados que cubren los quince requerimientos funcionales de la sección 7.1 | Favorable
+Seguridad | Credenciales inválidas, tokens caducados, accesos de rol equivocado y campos no declarados rechazados por la validación | Favorable
+Fiabilidad | Rechazo y reintento del pago, y consistencia de inventario y de cupo después de una operación fallida | Favorable
+Usabilidad | Flujos completos navegables, mensajes en español, estados vacíos y cancelaciones seguras; sin prueba formal con usuarios | Aceptable, con reserva
+Compatibilidad | Una sola combinación verificada: Chromium de escritorio | Parcial
+Eficiencia de desempeño | Duración de las suites, que no equivale al tiempo de respuesta de un despliegue real | Informativa
+Mantenibilidad | Compilación estricta y análisis estático sin errores; módulos de dominio sin dependencias circulares | Favorable
+Portabilidad | Requiere Node.js y PostgreSQL instalados en la máquina; no hay contenedores | Desfavorable frente al plan
+18.4 Pruebas no realizadas
+Para que el resultado no se lea como una calidad mayor que la demostrada, se listan los vacíos conocidos:
+Pruebas de carga y de estrés: al no ejecutarse, los percentiles de tiempo de respuesta prometidos en la sección 14 no tienen valor asociado.
+Matriz de navegadores y de tamaños de pantalla: solo se automatizó Chromium de escritorio.
+Auditoría automatizada de accesibilidad y de rendimiento con herramientas como Lighthouse o axe.
+Revisión de dependencias contra bases de vulnerabilidades y prueba de penetración externa.
+Validación formal de usabilidad con usuarios y encuesta de satisfacción.
+Ejecución continua: sin integración continua, ninguna de estas pruebas corre de forma automática en cada cambio.
+Estos vacíos acotan el alcance de la conclusión y definen la hoja de ruta inmediata del aseguramiento: instrumentar la suite de API, añadir un segundo navegador y montar la ejecución automática antes de poder afirmar algo sobre rendimiento o disponibilidad.
+19. Conclusiones
+El proyecto pasó de la planificación a un producto en ejecución, lo que confirma que considerar la calidad como un elemento transversal del proyecto compensó. La definición temprana de requisitos, una arquitectura organizada, una metodología ágil y una estrategia de pruebas permiten reducir riesgos y mejorar la probabilidad de entregar un producto que responda a las necesidades de sus usuarios.
+La adopción de Scrum y de las prácticas de ingeniería permitió entregar el producto en incrementos funcionales y sostener el control técnico sobre el código. La selección de tecnologías —React con TypeScript, Node.js con NestJS, TypeORM sobre PostgreSQL, Git y tres niveles de pruebas— resultó adecuada para construir una solución moderna y mantenible. La integración continua y la containerización, en cambio, no llegaron a montarse y representan la diferencia más visible entre lo planeado en la sección 9 y lo entregado en la sección 17.
+Desde la perspectiva de calidad, ISO/IEC 25010 dejó de ser una lista de intenciones y pasó a organizar la evidencia: la adecuación funcional, la seguridad, la fiabilidad y la mantenibilidad cuentan hoy con resultados automatizados favorables, la compatibilidad se verificó en un único navegador y el desempeño no se midió bajo carga. Esa asimetría es coherente con un producto que corre en un ambiente de desarrollo con una pasarela de pagos simulada, y así debe leerse el balance de la sección 18.
+Finalmente, la medición de indicadores demostró que el aseguramiento aporta información accionable y no un trámite documental: noventa y ocho casos automatizados aprobados, siete defectos corregidos durante la verificación y una cobertura instrumentada del 14.9 % que señala con precisión dónde falta evidencia. El trabajo por delante está ordenado por valor: instrumentar la suite de API, ampliar la matriz de navegadores, montar la ejecución automática de las pruebas y, cuando exista un entorno real, medir rendimiento y disponibilidad para completar el cuadro de la sección 14.
+20. Referencias bibliográficas
+International Organization for Standardization. (2023). ISO/IEC 25010:2023 — Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model.
+International Organization for Standardization & International Electrotechnical Commission. ISO/IEC/IEEE 29148:2018 — Systems and software engineering — Life cycle processes — Requirements engineering.
+International Organization for Standardization & International Electrotechnical Commission. ISO/IEC/IEEE 29119 — Software testing.
+International Organization for Standardization. ISO/IEC 27001 — Information security, cybersecurity and privacy protection — Information security management systems — Requirements.
+Schwaber, K., & Sutherland, J. (2020). The Scrum Guide: The Definitive Guide to Scrum: The Rules of the Game.
+OWASP Foundation. OWASP Top 10: The Ten Most Critical Web Application Security Risks.
+International Organization for Standardization. ISO 9001:2015 — Quality management systems — Requirements.
+CMMI Institute. CMMI Development — Process improvement and capability framework.
